@@ -4,7 +4,13 @@ class AlertsController < ApplicationController
   # GET /alerts
   # GET /alerts.json
   def index
-    @alerts = Alert.all
+    
+    if user_signed_in? 
+      @alerts = Alert.where(user_id: current_user)
+    else
+      @alerts = []
+    end
+
   end
 
   # GET /alerts/1
