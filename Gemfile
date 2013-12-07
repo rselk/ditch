@@ -3,6 +3,7 @@ source 'https://rubygems.org'
 gem 'devise'
 gem 'whenever', :require => false
 gem 'rufus-scheduler'
+gem "mail"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
