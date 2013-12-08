@@ -3,4 +3,4 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery -> 
-  $('.time_alert').datepicker()
+  $('.time_alert').datetimepicker()
