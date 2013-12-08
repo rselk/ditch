@@ -1,7 +1,7 @@
 scheduler = Rufus::Scheduler.new
 
 
-scheduler.every '15' do
+scheduler.every '50' do
   # Check if record time is past current time
   # if so, send email + mark record as sent (DO NOT DELETE AS NEED TO ALERT USER)
   # if not, do nothing
@@ -12,8 +12,8 @@ scheduler.every '15' do
     puts "SENT EMAIL TO: #{p.to_email}"
 
     AlertMail.send_email_alert(p.to_email).deliver
+    scheduler.join
   end
 end
 
-scheduler.join
 
