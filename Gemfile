@@ -5,6 +5,7 @@ gem 'whenever', :require => false
 gem 'rufus-scheduler'
 gem "mail"
 gem 'jquery-ui-rails'
+gem 'jquery_ujs'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
