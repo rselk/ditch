@@ -8,7 +8,7 @@ scheduler.every '10' do
   
   #@test = Alert.where("time_alert < ? AND msg_sent = ?", Time.now, false)
   #@test = Alert.where("time_alert < ? AND msg_sent == ?", DateTime.current, false)
-  @test = Alert.where("time_alert < ? AND msg_sent == ?", DateTime.current, 'f')
+  @test = Alert.where("time_alert < ? AND msg_sent = ?", DateTime.current, 'f')
   puts DateTime.current
 
   @test.each do |p|
