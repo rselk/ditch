@@ -4,11 +4,8 @@
   <br>
   <%= link_to 'Manage Alerts', "alerts?user_id="+current_user.id.to_s %>
   <br>
-  <%= link_to "Sign out", destroy_user_session_path, :method => :delete %> 
-  <br>
   <%= button_to "Sign out", destroy_user_session_path, :method => :delete %>   
   <br>
-  <%= link_to 'Destroy', destroy_user_session_path, confirm: 'Are you sure?', method: :delete %>
 <% else %>
   <%= link_to 'Sign Up / Sign In!', "users/sign_up" %>
 <% end %>
