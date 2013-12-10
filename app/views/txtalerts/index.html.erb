@@ -14,7 +14,20 @@
     </tr>
   </thead>
 
-
+  <tbody>
+    <% @txtalerts.each do |txtalert| %>
+      <tr>
+        <td><%= txtalert.time_alert %></td>
+        <td><%= txtalert.contents %></td>
+        <td><%= txtalert.to_sms %></td>
+        <td><%= txtalert.user_id %></td>
+        <td><%= txtalert.msg_sent %></td>
+        <td><%= link_to 'Show', txtalert %></td>
+        <td><%= link_to 'Edit', edit_txtalert_path(txtalert) %></td>
+        <td><%= button_to "Destroy", alert, :method => :delete, data: { confirm: 'Are you sure?' }%> </td>
+      </tr>
+    <% end %>
+  </tbody>
 </table>
 
 <br>
