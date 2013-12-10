@@ -1,15 +1,8 @@
 scheduler = Rufus::Scheduler.new
 
-#this will have to be hidden in future
-account_sid = 'AC77dd03e7b9af533c85a64ed5360c2bc4'
-auth_token = '630ad66ec565db63058109168c7c16c6'
-@client = Twilio::REST::Client.new account_sid, auth_token
+@client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
 
-@client.account.messages.create(
-  :from => '+15873162981',
-  :to => '+14038355938',
-  :body => 'RAILS FAILS'
-)
+
 
 scheduler.every '10' do
   # Check if record time is past current time
@@ -18,16 +11,26 @@ scheduler.every '10' do
   
   #@test = Alert.where("time_alert < ? AND msg_sent = ?", Time.now, false)
   #@test = Alert.where("time_alert < ? AND msg_sent == ?", DateTime.current, false)
-  @test = Alert.where("time_alert < ? AND msg_sent = ?", DateTime.current, 'f')
-  puts DateTime.current
+  @emailalerts = Alert.where("time_alert < ? AND msg_sent = ?", DateTime.current, 'f')
 
-  @test.each do |p|
-    puts "SENT EMAIL TO: #{p.to_email}, CONTENTS: #{p.contents}"
+  @emailalerts.each do |p|
     AlertMail.send_email_alert(p.to_email, p.contents).deliver
-
     p.update_attributes(msg_sent: 't')
     scheduler.join
   end
+
+  @txtalerts = Txtalert.where("time_alert < ? AND msg_sent = ?", DateTime.current, 'f')
+
+  @txtalerts.each do |p|
+    @client.account.messages.create(
+    :from => '+15873162981',
+    :to => '+14038355938',
+    :body => 'RAILS FAILS'
+    )
+    p.update_attributes(msg_sent: 't')
+    scheduler.join
+  end
+  
 end
 
 
