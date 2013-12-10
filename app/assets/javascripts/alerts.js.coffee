@@ -3,14 +3,12 @@
 # You can use CoffeeScript in this file: http://coffeescript.org/
 
 jQuery -> 
-  $('.time_alert').datetimepicker({
-  dateFormat: 'yy-mm-dd',
+$('#time_alert').datetimepicker({
   timeFormat: 'HH:mm z',
-  timezone: 'MT',
   timezoneList: [ 
-      { value: 'ET', label: 'Eastern'}, 
-      { value: 'CT', label: 'Central' }, 
-      { value: 'MT', label: 'Mountain' }, 
-      { value: 'PT', label: 'Pacific' } 
+      { value: -300, label: 'Eastern'}, 
+      { value: -360, label: 'Central' }, 
+      { value: -420, label: 'Mountain' }, 
+      { value: -480, label: 'Pacific' } 
     ]
 });
