@@ -1,6 +1,10 @@
 <h1>Editing txtalert</h1>
 
+<% if current_user.id == @txtalert.user_id %>
 <%= render 'form' %>
 
 <%= link_to 'Show', @txtalert %> |
 <%= link_to 'Back', txtalerts_path %>
+<% else %>
+<strong>You do not have access to this page </strong>
+<% end %>

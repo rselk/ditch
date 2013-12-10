@@ -24,7 +24,7 @@
         <td><%= txtalert.msg_sent %></td>
         <td><%= link_to 'Show', txtalert %></td>
         <td><%= link_to 'Edit', edit_txtalert_path(txtalert) %></td>
-        <td><%= link_to 'Destroy', txtalert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+        <td><%= button_to "Destroy", txtalert, :method => :delete, data: { confirm: 'Are you sure?' }%> </td>
       </tr>
     <% end %>
   </tbody>

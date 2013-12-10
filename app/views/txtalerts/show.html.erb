@@ -1,6 +1,5 @@
-<p id="notice"><%= notice %></p>
+<% if @txtalert.user_id == current_user.id %>
 
-<p>
   <strong>Time alert:</strong>
   <%= @txtalert.time_alert %>
 </p>
@@ -15,15 +14,9 @@
   <%= @txtalert.to_sms %>
 </p>
 
-<p>
-  <strong>User:</strong>
-  <%= @txtalert.user_id %>
-</p>
-
-<p>
-  <strong>Msg sent:</strong>
-  <%= @txtalert.msg_sent %>
-</p>
 
 <%= link_to 'Edit', edit_txtalert_path(@txtalert) %> |
 <%= link_to 'Back', txtalerts_path %>
+<% else %>
+<strong> You do not have access to this page <strong>
+<% end %>
