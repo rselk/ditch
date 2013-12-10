@@ -12,6 +12,8 @@ scheduler.every '10' do
   
   #@test = Alert.where("time_alert < ? AND msg_sent = ?", Time.now, false)
   #@test = Alert.where("time_alert < ? AND msg_sent == ?", DateTime.current, false)
+
+  puts "DateTime.current = #{DateTime.current}"
   @emailalerts = Alert.where("time_alert < ? AND msg_sent = ?", DateTime.current, 'f')
 
   @emailalerts.each do |p|
