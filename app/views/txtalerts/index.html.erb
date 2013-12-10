@@ -1,0 +1,35 @@
+<h1>Listing txtalerts</h1>
+
+<table>
+  <thead>
+    <tr>
+      <th>Time alert</th>
+      <th>Contents</th>
+      <th>To sms</th>
+      <th>User</th>
+      <th>Msg sent</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+    <% @txtalerts.each do |txtalert| %>
+      <tr>
+        <td><%= txtalert.time_alert %></td>
+        <td><%= txtalert.contents %></td>
+        <td><%= txtalert.to_sms %></td>
+        <td><%= txtalert.user_id %></td>
+        <td><%= txtalert.msg_sent %></td>
+        <td><%= link_to 'Show', txtalert %></td>
+        <td><%= link_to 'Edit', edit_txtalert_path(txtalert) %></td>
+        <td><%= link_to 'Destroy', txtalert, method: :delete, data: { confirm: 'Are you sure?' } %></td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Txtalert', new_txtalert_path %>

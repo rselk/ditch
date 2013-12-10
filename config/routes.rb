@@ -1,4 +1,6 @@
 Introuble::Application.routes.draw do
+  resources :txtalerts
+
   resources :alerts
   
   get "home/index"

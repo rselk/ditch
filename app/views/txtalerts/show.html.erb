@@ -1,0 +1,29 @@
+<p id="notice"><%= notice %></p>
+
+<p>
+  <strong>Time alert:</strong>
+  <%= @txtalert.time_alert %>
+</p>
+
+<p>
+  <strong>Contents:</strong>
+  <%= @txtalert.contents %>
+</p>
+
+<p>
+  <strong>To sms:</strong>
+  <%= @txtalert.to_sms %>
+</p>
+
+<p>
+  <strong>User:</strong>
+  <%= @txtalert.user_id %>
+</p>
+
+<p>
+  <strong>Msg sent:</strong>
+  <%= @txtalert.msg_sent %>
+</p>
+
+<%= link_to 'Edit', edit_txtalert_path(@txtalert) %> |
+<%= link_to 'Back', txtalerts_path %>

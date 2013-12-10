@@ -1,0 +1,2 @@
+module TxtalertsHelper
+end

@@ -11,10 +11,20 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131208042247) do
+ActiveRecord::Schema.define(version: 20131210011030) do
 
 # Could not dump table "alerts" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
+
+  create_table "txtalerts", force: true do |t|
+    t.string   "time_alert"
+    t.string   "contents"
+    t.string   "to_sms"
+    t.integer  "user_id"
+    t.string   "msg_sent"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
 
   create_table "users", force: true do |t|
     t.string   "email",                  default: "", null: false

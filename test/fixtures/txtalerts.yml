@@ -1,0 +1,15 @@
+# Read about fixtures at http://api.rubyonrails.org/classes/ActiveRecord/FixtureSet.html
+
+one:
+  time_alert: MyString
+  contents: MyString
+  to_sms: MyString
+  user_id: 1
+  msg_sent: MyString
+
+two:
+  time_alert: MyString
+  contents: MyString
+  to_sms: MyString
+  user_id: 1
+  msg_sent: MyString
