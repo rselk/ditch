@@ -24,9 +24,9 @@ scheduler.every '10' do
 
   @txtalerts.each do |p|
     @client.account.messages.create(
-    :from => '+15873162981',
-    :to => '+14038355938',
-    :body => 'RAILS FAILS'
+    :from => '+15873162981', #this is the default number for now
+    :to => "+ #{p.to_sms}",
+    :body => "#{p.contents}"
     )
     p.update_attributes(msg_sent: 't')
     scheduler.join
