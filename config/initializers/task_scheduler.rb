@@ -1,5 +1,6 @@
 scheduler = Rufus::Scheduler.new
-
+ACCOUNT_SID = 'AC77dd03e7b9af533c85a64ed5360c2bc4'
+AUTH_TOKEN = '630ad66ec565db63058109168c7c16c6'
 @client = Twilio::REST::Client.new ACCOUNT_SID, AUTH_TOKEN
 
 
@@ -30,7 +31,7 @@ scheduler.every '10' do
     p.update_attributes(msg_sent: 't')
     scheduler.join
   end
-  
+
 end
 
 
