@@ -1,0 +1,23 @@
+<p>
+
+<% if @alert.user_id == current_user.id %>
+  <strong>Time alert:</strong>
+  <%= @alert.time_alert %>
+</p>
+
+<p>
+  <strong>Contents:</strong>
+  <%= @alert.contents %>
+</p>
+
+<p>
+  <strong>To email:</strong>
+  <%= @alert.to_email %>
+</p>
+
+
+<%= link_to 'Edit', edit_alert_path(@alert) %> |
+<%= link_to 'Back', alerts_path %>
+<% else %>
+<strong> You do not have access to this page <strong>
+<% end %>

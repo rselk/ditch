@@ -1,0 +1,10 @@
+<h1>Editing smsalert</h1>
+
+<% if current_user.id == @smsalert.user_id %>
+<%= render 'form' %>
+
+<%= link_to 'Show', @smsalert %> |
+<%= link_to 'Back', smsalerts_path %>
+<% else %>
+<strong>You do not have access to this page </strong>
+<% end %>
