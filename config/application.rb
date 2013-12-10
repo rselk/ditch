@@ -30,7 +30,8 @@ module Introuble
         ENV[key.to_s] = value
       end if File.exists?(env_file)
 
-      config.assets.enabled = false
+      config.assets.enabled = true
+
     end
 
   end
