@@ -15,3 +15,5 @@
 //= require jquery.ui.datepicker
 //= require jquery.ui.slider
 //= require jquery-ui-timepicker-addon
+//= require_self
+//= require_tree .
