@@ -1,100 +1,94 @@
-<h1>All Listing alerts</h1>
-<br>
-<br>
-
-
-<h1> Alerts Not Yet Sent </h1>
-<table>
+<%- model_class = Manage-%>
+<div class="page-header">
+  <h1>Sent Alerts</h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Time alert</th>
-      <th>Contents</th>
-      <th>To</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%= model_class.human_attribute_name(:time_alert) %></th>
+      <th>Recipients</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
-  
+    <% @alerts_true.each do |alert| %>
+      <tr>
+        <td><%= alert.time_alert %> <br><strong>Contents</strong><br><%= alert.contents %> </td>
+        <td><%= alert.to_email %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_alert_path(alert), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      alert_path(alert),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+    <% @txtalerts_true.each do |alert| %>
+      <tr>
+        <td><%= alert.time_alert %> <br>Contents<br><%= alert.contents %> </td>
+        <td><%= alert.to_sms%></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_alert_path(alert), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      alert_path(alert),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<div class="page-header">
+  <h1>Unsent Alerts</h1>
+</div>
+
+<table class="table table-striped">
+   <thead>
+    <tr>
+      <th><%= model_class.human_attribute_name(:time_alert) %></th>
+      <th><%= model_class.human_attribute_name(:contents) %></th>
+      <th>Recipient</th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
+    </tr>
+  </thead>
+  <tbody>
     <% @alerts_false.each do |alert| %>
       <tr>
         <td><%= alert.time_alert %></td>
         <td><%= alert.contents %></td>
         <td><%= alert.to_email %></td>
-        <td><%= alert.user_id %></td>
-        <td><%= link_to 'Show', alert %></td>
-        <td><%= link_to 'Edit', edit_alert_path(alert) %></td>
-        <td><%= button_to "Destroy", alert, :method => :delete, data: { confirm: 'Are you sure?' }%> </td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_alert_path(alert), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      alert_path(alert),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
       </tr>
     <% end %>
-  </tbody>
-   <tbody>
-  
     <% @txtalerts_false.each do |alert| %>
       <tr>
         <td><%= alert.time_alert %></td>
         <td><%= alert.contents %></td>
         <td><%= alert.to_sms%></td>
-        <td><%= alert.user_id %></td>
-        <td><%= link_to 'Show', alert %></td>
-        <td><%= link_to 'Edit', edit_alert_path(alert) %></td>
-        <td><%= button_to "Destroy", alert, :method => :delete, data: { confirm: 'Are you sure?' }%> </td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_alert_path(alert), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      alert_path(alert),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
-
-<br>
-
-<h1> Alerts Sent </h1>
-<table>
-  <thead>
-    <tr>
-      <th>Time alert</th>
-      <th>Contents</th>
-      <th>To</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
-    </tr>
-  </thead>
-
-  <tbody>
-  
-    <% @alerts_true.each do |alert| %>
-      <tr>
-        <td><%= alert.time_alert %></td>
-        <td><%= alert.contents %></td>
-        <td><%= alert.to_email %></td>
-        <td><%= alert.user_id %></td>
-        <td><%= link_to 'Show', alert %></td>
-        <td><%= link_to 'Edit', edit_alert_path(alert) %></td>
-        <td><%= button_to "Destroy", alert, :method => :delete, data: { confirm: 'Are you sure?' }%> </td>
-      </tr>
-    <% end %>
-  </tbody>
-   <tbody>
-  
-    <% @txtalerts_false.each do |alert| %>
-      <tr>
-        <td><%= alert.time_alert %></td>
-        <td><%= alert.contents %></td>
-        <td><%= alert.to_sms%></td>
-        <td><%= alert.user_id %></td>
-        <td><%= link_to 'Show', alert %></td>
-        <td><%= link_to 'Edit', edit_alert_path(alert) %></td>
-        <td><%= button_to "Destroy", alert, :method => :delete, data: { confirm: 'Are you sure?' }%> </td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
-
-<br>
-
-<%= link_to 'New Email Alert', new_alert_path %>
-<br>
-<%= link_to 'New SMS Alert', new_txtalert_path %>

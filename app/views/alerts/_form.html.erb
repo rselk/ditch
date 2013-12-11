@@ -1,35 +1,38 @@
-<%= form_for(@alert) do |f| %>
-  <% if @alert.errors.any? %>
-    <div id="error_explanation">
-      <h2><%= pluralize(@alert.errors.count, "error") %> prohibited this alert from being saved:</h2>
-
-      <ul>
-      <% @alert.errors.full_messages.each do |msg| %>
-        <li><%= msg %></li>
-      <% end %>
-      </ul>
+<%= form_for @alert, :html => { :class => 'form-horizontal' } do |f| %>
+  <div class="control-group">
+    <%= f.label :time_alert, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :time_alert, :class => 'text_field' %>
     </div>
-  <% end %>
+  </div>
+  <div class="control-group">
+    <%= f.label :contents, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :contents, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :to_email, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :to_email, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :user_id, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :user_id, :class => 'text_field' %>
+    </div>
+  </div>
+  <div class="control-group">
+    <%= f.label :msg_sent, :class => 'control-label' %>
+    <div class="controls">
+      <%= f.text_field :msg_sent, :class => 'text_field' %>
+    </div>
+  </div>
 
-  <div class="field">
-    <%= f.label :time_alert %><br>
-    <%= f.text_field :time_alert, class: "time_alert" %>
-  </div>
-  <div class="field">
-    <%= f.label :contents %><br>
-    <%= f.text_area :contents %>
-  </div>
-  <div class="field">
-    <%= f.label :to_email %><br>
-    <%= f.text_field :to_email %>
-  </div>
-  <div class="field">
-  <%= f.hidden_field :user_id, :value => current_user.id %>
-  </div>
-  <div class="field">
-  <%= f.hidden_field :msg_sent, :value => 'f' %>
-  </div>
-  <div class="actions">
-    <%= f.submit %>
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                alerts_path, :class => 'btn' %>
   </div>
 <% end %>

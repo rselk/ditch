@@ -12,5 +12,6 @@ class ManageController < ApplicationController
       @txtalerts_true= []
     end
 
+
   end
 end

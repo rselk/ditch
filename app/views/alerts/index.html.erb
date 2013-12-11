@@ -1,35 +1,44 @@
-<h1>Listing alerts</h1>
-
-
-<table>
+<%- model_class = Alert -%>
+<div class="page-header">
+  <h1><%=t '.title', :default => model_class.model_name.human.pluralize.titleize %></h1>
+</div>
+<table class="table table-striped">
   <thead>
     <tr>
-      <th>Time alert</th>
-      <th>Contents</th>
-      <th>To email</th>
-      <th>User</th>
-      <th></th>
-      <th></th>
-      <th></th>
+      <th><%= model_class.human_attribute_name(:id) %></th>
+      <th><%= model_class.human_attribute_name(:time_alert) %></th>
+      <th><%= model_class.human_attribute_name(:contents) %></th>
+      <th><%= model_class.human_attribute_name(:to_email) %></th>
+      <th><%= model_class.human_attribute_name(:user_id) %></th>
+      <th><%= model_class.human_attribute_name(:msg_sent) %></th>
+      <th><%= model_class.human_attribute_name(:created_at) %></th>
+      <th><%=t '.actions', :default => t("helpers.actions") %></th>
     </tr>
   </thead>
-
   <tbody>
-  
     <% @alerts.each do |alert| %>
       <tr>
+        <td><%= link_to alert.id, alert_path(alert) %></td>
         <td><%= alert.time_alert %></td>
         <td><%= alert.contents %></td>
         <td><%= alert.to_email %></td>
         <td><%= alert.user_id %></td>
-        <td><%= link_to 'Show', alert %></td>
-        <td><%= link_to 'Edit', edit_alert_path(alert) %></td>
-        <td><%= button_to "Destroy", alert, :method => :delete, data: { confirm: 'Are you sure?' }%> </td>
+        <td><%= alert.msg_sent %></td>
+        <td><%=l alert.created_at %></td>
+        <td>
+          <%= link_to t('.edit', :default => t("helpers.links.edit")),
+                      edit_alert_path(alert), :class => 'btn btn-mini' %>
+          <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+                      alert_path(alert),
+                      :method => :delete,
+                      :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
+                      :class => 'btn btn-mini btn-danger' %>
+        </td>
       </tr>
     <% end %>
   </tbody>
 </table>
 
-<br>
-
-<%= link_to 'New Alert', new_alert_path %>
+<%= link_to t('.new', :default => t("helpers.links.new")),
+            new_alert_path,
+            :class => 'btn btn-primary' %>
