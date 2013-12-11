@@ -31,6 +31,6 @@ module Introuble
       end if File.exists?(env_file)
 
     end
-    config.assets.precompile += %w(*.png *.jpg *.jpeg *.gif)
+    config.assets.initialize_on_precompile = false
   end
 end
