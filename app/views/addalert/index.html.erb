@@ -1,1 +1,10 @@
-javascript window here with choice between sms and email
+<% if user_signed_in? %>
+  <br>
+  <%= link_to 'Add Email Alert', "alerts/new" %>
+  <br>
+   <%= link_to 'Add Text Alert', "txtalerts/new" %>
+  <br>
+<% else %>
+  <h1> You must be signed in to view this page </h1>
+  <%= link_to 'Sign Up / Sign In!', "users/sign_up" %>
+<% end %>

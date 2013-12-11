@@ -6,7 +6,10 @@ gem 'rufus-scheduler'
 gem "mail"
 gem 'jquery-ui-rails'
 gem 'twilio-ruby'
+gem 'twitter-bootstrap-rails'
 
+gem "therubyracer"
+gem "less-rails"
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.0.2'
 

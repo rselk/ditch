@@ -1,13 +1,15 @@
+            
 <% if user_signed_in? %>
   <br>
-  <%= link_to 'Add Email Alert', "alerts/new" %>
-  <br>
-   <%= link_to 'Add Text Alert', "txtalerts/new" %>
-  <br>
-  <%= link_to 'Manage Alerts', "manage" %>
-  <br>
-  <%= button_to "Sign out", destroy_user_session_path, :method => :delete %>   
+
+  <%= link_to '<i class="icon-white icon-th-list"></i> Add Alert'.html_safe, "addalert", :class => "btn btn-success btn-large custom" %> 
+  <br><br>
+  <%= link_to '<i class="icon-white icon-th-list"></i> Manage Alerts'.html_safe, "manage", :class => "btn btn-success btn-large custom" %>   
+  <br><br>
+  <%= link_to '<i class="icon-white icon-user"></i> Sign Out'.html_safe, destroy_user_session_path, :class => "btn btn-success btn-large custom", :method => :delete %> 
+
   <br>
 <% else %>
   <%= link_to 'Sign Up / Sign In!', "users/sign_up" %>
 <% end %>
+
