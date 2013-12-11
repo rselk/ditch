@@ -12,6 +12,8 @@ Introuble::Application.routes.draw do
   
   root :to => "home#index" 
 
+  get 'manage' => "manage#index"
+
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"

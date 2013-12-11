@@ -1,8 +1,10 @@
 <% if user_signed_in? %>
   <br>
-  <%= link_to 'Add Alert', "alerts/new" %>
+  <%= link_to 'Add Email Alert', "alerts/new" %>
   <br>
-  <%= link_to 'Manage Alerts', "alerts?user_id="+current_user.id.to_s %>
+   <%= link_to 'Add Text Alert', "txtalerts/new" %>
+  <br>
+  <%= link_to 'Manage Alerts', "manage" %>
   <br>
   <%= button_to "Sign out", destroy_user_session_path, :method => :delete %>   
   <br>
