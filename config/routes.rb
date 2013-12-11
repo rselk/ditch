@@ -13,6 +13,7 @@ Introuble::Application.routes.draw do
   root :to => "home#index" 
 
   get 'manage' => "manage#index"
+  get 'addalert' => "addalert#index"
 
   # See how all your routes lay out with "rake routes".
 

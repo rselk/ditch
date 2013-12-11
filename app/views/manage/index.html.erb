@@ -1,0 +1,100 @@
+<h1>All Listing alerts</h1>
+<br>
+<br>
+
+
+<h1> Alerts Not Yet Sent </h1>
+<table>
+  <thead>
+    <tr>
+      <th>Time alert</th>
+      <th>Contents</th>
+      <th>To</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  
+    <% @alerts_false.each do |alert| %>
+      <tr>
+        <td><%= alert.time_alert %></td>
+        <td><%= alert.contents %></td>
+        <td><%= alert.to_email %></td>
+        <td><%= alert.user_id %></td>
+        <td><%= link_to 'Show', alert %></td>
+        <td><%= link_to 'Edit', edit_alert_path(alert) %></td>
+        <td><%= button_to "Destroy", alert, :method => :delete, data: { confirm: 'Are you sure?' }%> </td>
+      </tr>
+    <% end %>
+  </tbody>
+   <tbody>
+  
+    <% @txtalerts_false.each do |alert| %>
+      <tr>
+        <td><%= alert.time_alert %></td>
+        <td><%= alert.contents %></td>
+        <td><%= alert.to_sms%></td>
+        <td><%= alert.user_id %></td>
+        <td><%= link_to 'Show', alert %></td>
+        <td><%= link_to 'Edit', edit_alert_path(alert) %></td>
+        <td><%= button_to "Destroy", alert, :method => :delete, data: { confirm: 'Are you sure?' }%> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<h1> Alerts Sent </h1>
+<table>
+  <thead>
+    <tr>
+      <th>Time alert</th>
+      <th>Contents</th>
+      <th>To</th>
+      <th>User</th>
+      <th></th>
+      <th></th>
+      <th></th>
+    </tr>
+  </thead>
+
+  <tbody>
+  
+    <% @alerts_true.each do |alert| %>
+      <tr>
+        <td><%= alert.time_alert %></td>
+        <td><%= alert.contents %></td>
+        <td><%= alert.to_email %></td>
+        <td><%= alert.user_id %></td>
+        <td><%= link_to 'Show', alert %></td>
+        <td><%= link_to 'Edit', edit_alert_path(alert) %></td>
+        <td><%= button_to "Destroy", alert, :method => :delete, data: { confirm: 'Are you sure?' }%> </td>
+      </tr>
+    <% end %>
+  </tbody>
+   <tbody>
+  
+    <% @txtalerts_false.each do |alert| %>
+      <tr>
+        <td><%= alert.time_alert %></td>
+        <td><%= alert.contents %></td>
+        <td><%= alert.to_sms%></td>
+        <td><%= alert.user_id %></td>
+        <td><%= link_to 'Show', alert %></td>
+        <td><%= link_to 'Edit', edit_alert_path(alert) %></td>
+        <td><%= button_to "Destroy", alert, :method => :delete, data: { confirm: 'Are you sure?' }%> </td>
+      </tr>
+    <% end %>
+  </tbody>
+</table>
+
+<br>
+
+<%= link_to 'New Email Alert', new_alert_path %>
+<br>
+<%= link_to 'New SMS Alert', new_txtalert_path %>
