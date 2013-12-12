@@ -1,9 +1,94 @@
 <% if user_signed_in? %>
-  <br>
-  <%= link_to 'Add Email Alert', "alerts/new" %>
-  <br>
-   <%= link_to 'Add Text Alert', "txtalerts/new" %>
-  <br>
+<body>
+
+<div class="container">
+ 
+<!-------->
+<script type="text/javascript">
+    jQuery(document).ready(function ($) {
+        $('#tabs').tab();
+    });
+</script> 
+
+<div id="content">
+    <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
+        <li class="active"><a href="#email" data-toggle="tab">Email</a></li>
+        <li><a href="#sms" data-toggle="tab">SMS</a></li>
+    </ul>
+    <div id="my-tab-content" class="tab-content">
+        <div class="tab-pane active" id="email">
+            <h1>Email</h1>
+            <%= form_for @alert, :html => { :class => 'form-horizontal' } do |f| %>
+              <div class="control-group">
+                <%= f.label :time_alert, :class => 'control-label' %>
+                <div class="controls">
+                  <%= f.text_field :time_alert, :class => 'text_field' %>
+                </div>
+              </div>
+              <div class="control-group">
+                <%= f.label :contents, :class => 'control-label' %>
+                <div class="controls">
+                  <%= f.text_area :contents, :class => 'text_field' %>
+                </div>
+              </div>
+              <div class="control-group">
+                <%= f.label :to_email, :class => 'control-label' %>
+                <div class="controls">
+                  <%= f.text_field :to_email, :class => 'text_field' %>
+                </div>
+              </div>
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+                <%= f.hidden_field :msg_sent, :value => 'f' %>
+
+  <div class="form-actions">
+    <%= f.submit nil, :class => 'btn btn-primary' %>
+    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                alerts_path, :class => 'btn' %>
+  </div>
+<% end %>
+
+    </div>
+        <div class="tab-pane" id="sms">
+            <h1>SMS</h1>
+              <%= form_for @txtalert, :html => { :class => 'form-horizontal' } do |f| %>
+                <div class="control-group">
+                  <%= f.label :time_alert, :class => 'control-label' %>
+                  <div class="controls">
+                    <%= f.text_field :time_alert, :class => 'text_field' %>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <%= f.label :contents, :class => 'control-label' %>
+                  <div class="controls">
+                    <%= f.text_area :contents, :class => 'text_field' %>
+                  </div>
+                </div>
+                <div class="control-group">
+                  <%= f.label :to_sms, :class => 'control-label' %>
+                  <div class="controls">
+                    <%= f.text_field :to_sms, :class => 'text_field' %>
+                  </div>
+                </div>
+                  <%= f.hidden_field :user_id, :value => current_user.id %>
+                  <%= f.hidden_field :msg_sent, :value => 'f' %>
+
+    <div class="form-actions">
+      <%= f.submit "Create Alert", :class => 'btn btn-primary' %>
+      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
+                  txtalerts_path, :class => 'btn' %>
+    </div>
+<% end %>
+        </div>
+    </div>
+</div>
+ 
+ 
+  
+</div> <!-- container -->
+ 
+<script type="text/javascript" src="../bootstrap/js/bootstrap.js"></script>
+</body>
+
 <% else %>
   <h1> You must be signed in to view this page </h1>
   <%= link_to 'Sign Up / Sign In!', "users/sign_up" %>
