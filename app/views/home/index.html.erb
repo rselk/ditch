@@ -1,15 +1,70 @@
-            
-<% if user_signed_in? %>
-  <br>
+<div class="container">
+  <div class="row">
+    <div class="span9">
+     <% if user_signed_in? %>
+      <br>
 
-  <%= link_to '<i class="icon-white icon-th-list"></i> Add Alert'.html_safe, "addalert", :class => "btn btn-success btn-large custom" %> 
-  <br><br>
-  <%= link_to '<i class="icon-white icon-th-list"></i> Manage Alerts'.html_safe, "manage", :class => "btn btn-success btn-large custom" %>   
-  <br><br>
-  <%= link_to '<i class="icon-white icon-user"></i> Sign Out'.html_safe, destroy_user_session_path, :class => "btn btn-success btn-large custom", :method => :delete %> 
+      <%= link_to '<i class="icon-white icon-th-list"></i> Add Alert'.html_safe, "addalert", :class => "btn btn-success btn-large butmain" %> 
+      <br><br>
+      <%= link_to '<i class="icon-white icon-th-list"></i> Manage Alerts'.html_safe, "manage", :class => "btn btn-success btn-large butmain" %>   
+      <br><br>
+      <%= link_to '<i class="icon-white icon-user"></i> Sign Out'.html_safe, destroy_user_session_path, :class => "btn btn-success btn-large butmain", :method => :delete %> 
 
-  <br>
-<% else %>
-  <%= link_to 'Sign Up / Sign In!', "users/sign_up" %>
-<% end %>
+      <br>
+      <br>
+
+      <% else %>
+      <h1> ditch </h1>
+      <h2> Delayed - Switch </h2>
+        <p>A take on an internet deadmans switch. Create messages with departure dates and if you do not rememove them in time, our system will send them.</p> 
+
+    </div>
+    <div class="span3 withLineHeight">
+     <h2>Sign In</h2>
+        <%= form_for("user", :url => user_session_path) do |f| %>
+        <div><%= f.label :email %><br />
+        <%= f.email_field :email %></div>
+        <div><%= f.label :password do %>
+          Password   <%= link_to "Forgot?", new_password_path('user') %>
+          <% end %>
+        <%= f.password_field :password %></div>
+        
+        <%= f.label :remember_me do %>
+          <%= f.check_box :remember_me %>
+          Remember Me
+        <% end %>
+
+      <%= f.submit 'Sign in', :class => "btn btn-success btn-large butmain" %>
+  <% end %>
+
+
+        <h2>Register Now!</h2>
+
+  <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
+    <%= devise_error_messages! %>
+
+    <div><%= f.label :email %><br />
+    <%= f.email_field :email %></div>
+
+    <div><%= f.label :password %><br />
+    <%= f.password_field :password %></div>
+
+    <div><%= f.label :password_confirmation %><br />
+    <%= f.password_field :password_confirmation %></div>
+
+    <div><%= f.submit 'Register!', :class => "btn btn-success btn-large butmain" %></div>
+  <% end %>
+
+  <% end %>        
+
+
+
+    </div>
+  </div>
+</div>        
+
+
+
+
+
 

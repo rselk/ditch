@@ -7,8 +7,21 @@
 <script type="text/javascript">
     jQuery(document).ready(function ($) {
         $('#tabs').tab();
+
+        $('#time_alert').datetimepicker({
+  timeFormat: 'HH:mm z',
+  timezoneList: [ 
+      { value: -300, label: 'Eastern'}, 
+      { value: -360, label: 'Central' }, 
+      { value: -420, label: 'Mountain' }, 
+      { value: -480, label: 'Pacific' } 
+    ],
+    
     });
+        });
 </script> 
+
+
 
 <div id="content">
     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
@@ -22,7 +35,7 @@
               <div class="control-group">
                 <%= f.label :time_alert, :class => 'control-label' %>
                 <div class="controls">
-                  <%= f.text_field :time_alert, :class => 'text_field' %>
+                  <%= f.text_field :time_alert, :id => 'time_alert' %>
                 </div>
               </div>
               <div class="control-group">
