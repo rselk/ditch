@@ -10,18 +10,32 @@
 
         $('#time_alert').datetimepicker({
   timeFormat: 'HH:mm z',
+  timezone: 'MT',
   timezoneList: [ 
-      { value: -300, label: 'Eastern'}, 
-      { value: -360, label: 'Central' }, 
-      { value: -420, label: 'Mountain' }, 
-      { value: -480, label: 'Pacific' } 
-    ],
-    
-    });
+      { value: 'ET', label: 'Eastern'}, 
+      { value: 'CT', label: 'Central' }, 
+      { value: 'MT', label: 'Mountain' }, 
+      { value: 'PT', label: 'Pacific' } 
+    ]
+});
         });
 </script> 
 
+<script type="text/javascript">
+$().ready(function() {
 
+$("#datepicker").datetimepicker({
+    onSelect: function(dateText, inst) { 
+    $("#datepicker_value").val(dateText);
+  }
+});
+
+});
+</script>
+<div id="ddcal">
+<div id="datepicker"></div>
+<p><input type="text" id="datepicker_value" /></p>
+</div>
 
 <div id="content">
     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
