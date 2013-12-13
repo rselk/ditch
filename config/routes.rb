@@ -14,7 +14,7 @@ Introuble::Application.routes.draw do
 
   get 'manage' => "manage#index"
   get 'addalert' => "addalert#index"
-
+  get 'about' => "about#index"
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"
