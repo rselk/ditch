@@ -4,7 +4,12 @@ Introuble::Application.routes.draw do
   resources :alerts
   
   get "home/index"
-  devise_for :users
+
+  devise_for :users, :controllers => { :registrations => "users" }
+  devise_scope :user do
+    resources :users
+  end
+
   resources :users
 
 

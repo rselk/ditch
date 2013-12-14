@@ -47,13 +47,15 @@
 
     <div>
     <%= f.email_field :email, :placeholder => "Email"  %></div>
-
+    <div>
+    <%= f.select :timezone, ActiveSupport::TimeZone.all { |z| [z.name, z.utc_offset / 1.hour] }%>
     <div>
     <%= f.password_field :password, :placeholder => "Password"  %></div>
 
     <div>
     <%= f.password_field :password_confirmation, :placeholder => "Confirm Password"  %></div>
 
+    
     <div><%= f.submit 'Register!', :class => "btn btn-success btn-large butmain" %></div>
   <% end %>
 
