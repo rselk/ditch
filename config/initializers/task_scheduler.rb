@@ -1,4 +1,5 @@
 scheduler = Rufus::Scheduler.new
+
 account_sid = 'AC77dd03e7b9af533c85a64ed5360c2bc4'
 auth_token = '630ad66ec565db63058109168c7c16c6'
 @client = Twilio::REST::Client.new account_sid, auth_token
@@ -14,7 +15,7 @@ scheduler.every '10' do
   #@test = Alert.where("time_alert < ? AND msg_sent == ?", DateTime.current, false)
 
   puts "DateTime.current = #{DateTime.current}"
-  @emailalerts = Alert.where("time_alert < ? AND msg_sent = ?", DateTime.current, 'f')
+  @emailalerts = Alert.where("date(time_alert) > ? AND msg_sent = ?", Time.now.to_datetime, 'f')
 
   @emailalerts.each do |p|
     AlertMail.send_email_alert(p.to_email, p.contents).deliver
@@ -22,7 +23,7 @@ scheduler.every '10' do
     scheduler.join
   end
 
-  @txtalerts = Txtalert.where("time_alert < ? AND msg_sent = ?", DateTime.current, 'f')
+  @txtalerts = Txtalert.where("time_alert < ? AND msg_sent = ?", Time.now.to_datetime, 'f')
 
   @txtalerts.each do |p|
     @client.account.messages.create(

@@ -6,6 +6,9 @@ class Alert < ActiveRecord::Base
   def addtimezone 
     cuser = User.where(:id => self.user_id)
     cuserutc = cuser.first.timezone[4..9]
-    self.time_alert = "#{self.time_alert} #{cuserutc}"
+    tmpstr = "#{self.time_alert} #{cuserutc}"
+    puts "TMMMMPSTR #{tmpstr}"
+    puts "DTPRASE: #{DateTime.parse(tmpstr) }"
+    self.time_alert = "#{DateTime.parse(tmpstr)}"
   end
 end
