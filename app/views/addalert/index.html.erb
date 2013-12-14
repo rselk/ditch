@@ -25,17 +25,23 @@
 $().ready(function() {
 
 $("#datepicker").datetimepicker({
-    onSelect: function(dateText, inst) { 
+
+  onSelect: function(dateText, inst) { 
     $("#datepicker_value").val(dateText);
+  }
+});
+});
+
+$().ready(function() {
+
+$("#txtdatepicker").datetimepicker({
+  onSelect: function(dateText, inst) { 
+    $("#txtdatepicker_value").val(dateText);
   }
 });
 
 });
 </script>
-<div id="ddcal">
-<div id="datepicker"></div>
-<p><input type="text" id="datepicker_value" /></p>
-</div>
 
 <div id="content">
     <ul id="tabs" class="nav nav-tabs" data-tabs="tabs">
@@ -47,9 +53,9 @@ $("#datepicker").datetimepicker({
             <h1>Email</h1>
             <%= form_for @alert, :html => { :class => 'form-horizontal' } do |f| %>
               <div class="control-group">
-                <%= f.label :time_alert, :class => 'control-label' %>
                 <div class="controls">
-                  <%= f.text_field :time_alert, :id => 'time_alert' %>
+                  <div id="datepicker"></div><br>
+                  <%= f.text_field :time_alert, :id => 'datepicker_value' %>
                 </div>
               </div>
               <div class="control-group">
@@ -68,9 +74,7 @@ $("#datepicker").datetimepicker({
                 <%= f.hidden_field :msg_sent, :value => 'f' %>
 
   <div class="form-actions">
-    <%= f.submit nil, :class => 'btn btn-primary' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                alerts_path, :class => 'btn' %>
+    <%= f.submit nil, :class => 'btn btn-success btn-large butmain' %>
   </div>
 <% end %>
 
@@ -81,7 +85,8 @@ $("#datepicker").datetimepicker({
                 <div class="control-group">
                   <%= f.label :time_alert, :class => 'control-label' %>
                   <div class="controls">
-                    <%= f.text_field :time_alert, :class => 'text_field' %>
+                    <div id="txtdatepicker"></div><br>
+                  <%= f.text_field :time_alert, :id => 'txtdatepicker_value' %>
                   </div>
                 </div>
                 <div class="control-group">
@@ -100,9 +105,7 @@ $("#datepicker").datetimepicker({
                   <%= f.hidden_field :msg_sent, :value => 'f' %>
 
     <div class="form-actions">
-      <%= f.submit "Create Alert", :class => 'btn btn-primary' %>
-      <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                  txtalerts_path, :class => 'btn' %>
+      <%= f.submit nil, :class => 'btn btn-success btn-large butmain' %>
     </div>
 <% end %>
         </div>
