@@ -7,7 +7,7 @@
   <%= f.email_field :email, :autofocus => true %></div>
 
   <div><%= f.label :timezone%><br />
-  <%= f.text_field :timezone %></div>
+  <%= f.select :timezone, ActiveSupport::TimeZone.all { |z| [z.name, z.utc_offset / 1.hour] }%>
 
   <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
     <div>Currently waiting confirmation for: <%= resource.unconfirmed_email %></div>
