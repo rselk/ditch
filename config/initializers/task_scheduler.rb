@@ -23,7 +23,7 @@ end
 
 
 txtscheduler.every '20' do
-  @txtalerts = Txtalert.where("unixTime < ? AND msg_sent = ?", Time.now.to_i, 'f')
+  @txtalerts = Txtalert.where("UnixTime < ? AND msg_sent = ?", Time.now.to_i, 'f')
 
   @txtalerts.each do |p|
     @client.account.messages.create(
