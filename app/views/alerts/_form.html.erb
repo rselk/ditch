@@ -8,7 +8,8 @@
   <div class="control-group">
     <%= f.label :contents, :class => 'control-label' %>
     <div class="controls">
-      <%= f.text_field :contents, :class => 'text_field' %>
+      <%= f.text_area :contents, :class => 'text_field' %>
+
     </div>
   </div>
   <div class="control-group">
@@ -17,22 +18,11 @@
       <%= f.text_field :to_email, :class => 'text_field' %>
     </div>
   </div>
-  <div class="control-group">
-    <%= f.label :user_id, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :user_id, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :msg_sent, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :msg_sent, :class => 'text_field' %>
-    </div>
-  </div>
+  
 
   <div class="form-actions">
     <%= f.submit nil, :class => 'btn btn-primary' %>
     <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                alerts_path, :class => 'btn' %>
+                manage_path, :class => 'btn' %>
   </div>
 <% end %>

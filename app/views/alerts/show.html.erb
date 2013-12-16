@@ -10,15 +10,10 @@
   <dd><%= @alert.contents %></dd>
   <dt><strong><%= model_class.human_attribute_name(:to_email) %>:</strong></dt>
   <dd><%= @alert.to_email %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:user_id) %>:</strong></dt>
-  <dd><%= @alert.user_id %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:msg_sent) %>:</strong></dt>
-  <dd><%= @alert.msg_sent %></dd>
+
 </dl>
 
 <div class="form-actions">
-  <%= link_to t('.back', :default => t("helpers.links.back")),
-              alerts_path, :class => 'btn'  %>
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
               edit_alert_path(@alert), :class => 'btn' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
