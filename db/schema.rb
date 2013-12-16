@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131214073935) do
+ActiveRecord::Schema.define(version: 20131216194329) do
 
 # Could not dump table "alerts" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
