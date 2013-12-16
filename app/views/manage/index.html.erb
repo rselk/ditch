@@ -33,7 +33,7 @@
       <% end %>
       <% @txtalerts_true.each do |alert| %>
         <tr>
-          <td><%= alert.time_alert %> <br>Contents<br><%= alert.contents %> </td>
+          <td><%= alert.time_alert %> <br><strong>Contents</strong><br><%= alert.contents %> </td>
           <td><%= alert.to_sms%></td>
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
@@ -77,13 +77,13 @@
       <% end %>
       <% @txtalerts_false.each do |alert| %>
         <tr>
-          <td><%= alert.time_alert %> <br>Contents<br><%= alert.contents %> </td>
+          <td><%= alert.time_alert %> <br><strong>Contents</strong><br><%= alert.contents %> </td>
           <td><%= alert.to_sms%></td>
           <td>
             <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_alert_path(alert), :class => 'btn btn-success' %>
+                        edit_txtalert_path(alert), :class => 'btn btn-success' %>
             <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
-                        alert_path(alert),
+                        txtalert_path(alert),
                         :method => :delete,
                         :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
                         :class => 'btn btn-danger' %>
