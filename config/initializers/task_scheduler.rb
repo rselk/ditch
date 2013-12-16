@@ -22,7 +22,7 @@ scheduler.every '10' do
     scheduler.join
   end
 
-  @txtalerts = Txtalert.where("time_alert < ? AND msg_sent = ?", DateTime.current, 'f')
+  @txtalerts = Txtalert.where("unixTime < ? AND msg_sent = ?", Time.now.to_i, 'f')
 
   @txtalerts.each do |p|
     @client.account.messages.create(
