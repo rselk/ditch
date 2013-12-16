@@ -14,6 +14,6 @@ class Alert < ActiveRecord::Base
     utimeconstruct = "#{self.time_alert} #{cuserutc}"
 
     #populate unixTime column (so we can compare it quickly when we scan database)
-    self.unixTime = Time.parse(utimeconstruct)
+    self.unixtime = Time.parse(utimeconstruct)
   end
 end

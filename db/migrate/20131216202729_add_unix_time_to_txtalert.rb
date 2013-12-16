@@ -1,5 +1,5 @@
 class AddUnixTimeToTxtalert < ActiveRecord::Migration
   def change
-    add_column :txtalerts, :UnixTime, :integer
+    add_column :txtalerts, :unixtime, :integer
   end
 end

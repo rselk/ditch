@@ -12,7 +12,7 @@ scheduler.every '10' do
   # if not, do nothing
   
   puts "DateTime.current = #{DateTime.current}"
-  @emailalerts = Alert.where("unixTime < ? AND msg_sent = ?", Time.now.to_i, 'f')
+  @emailalerts = Alert.where("unixtime < ? AND msg_sent = ?", Time.now.to_i, 'f')
 
   @emailalerts.each do |p|
     AlertMail.send_email_alert(p.to_email, p.contents).deliver
@@ -23,7 +23,7 @@ end
 
 
 txtscheduler.every '20' do
-  @txtalerts = Txtalert.where("UnixTime < ? AND msg_sent = ?", Time.now.to_i, 'f')
+  @txtalerts = Txtalert.where("unixtime < ? AND msg_sent = ?", Time.now.to_i, 'f')
 
   @txtalerts.each do |p|
     @client.account.messages.create(

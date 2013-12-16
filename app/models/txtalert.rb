@@ -11,6 +11,6 @@ class Txtalert < ActiveRecord::Base
       #construct string with time_alert + current timezone
       utimeconstruct = "#{self.time_alert} #{cuserutc}"
       #populate unixTime column (so we can compare it quickly when we scan database)
-      self.UnixTime = Time.parse(utimeconstruct)
+      self.unixtime = Time.parse(utimeconstruct)
     end
 end

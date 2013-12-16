@@ -24,7 +24,7 @@ ActiveRecord::Schema.define(version: 20131216202729) do
     t.string   "msg_sent"
     t.datetime "created_at"
     t.datetime "updated_at"
-    t.integer  "UnixTime"
+    t.integer  "unixtime"
   end
 
   create_table "users", force: true do |t|
