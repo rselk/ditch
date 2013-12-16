@@ -1,4 +1,5 @@
 scheduler = Rufus::Scheduler.new
+txtscheduler = Rufus::Scheduler.new
 account_sid = 'AC77dd03e7b9af533c85a64ed5360c2bc4'
 auth_token = '630ad66ec565db63058109168c7c16c6'
 @client = Twilio::REST::Client.new account_sid, auth_token
@@ -10,9 +11,6 @@ scheduler.every '10' do
   # if so, send email + mark record as sent (DO NOT DELETE AS NEED TO ALERT USER)
   # if not, do nothing
   
-  #@test = Alert.where("time_alert < ? AND msg_sent = ?", Time.now, false)
-  #@test = Alert.where("time_alert < ? AND msg_sent == ?", DateTime.current, false)
-
   puts "DateTime.current = #{DateTime.current}"
   @emailalerts = Alert.where("unixTime < ? AND msg_sent = ?", Time.now.to_i, 'f')
 
@@ -21,7 +19,10 @@ scheduler.every '10' do
     p.update_attributes(msg_sent: 't')
     scheduler.join
   end
+end
 
+
+txtscheduler.every '20' do
   @txtalerts = Txtalert.where("unixTime < ? AND msg_sent = ?", Time.now.to_i, 'f')
 
   @txtalerts.each do |p|
@@ -35,5 +36,3 @@ scheduler.every '10' do
   end
 
 end
-
-
