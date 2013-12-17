@@ -65,9 +65,7 @@
           <td><%= alert.time_alert %> <br><strong>Contents</strong><br><%= alert.contents %> </td>
           <td><%= alert.to_email %></td>
           <td>
-            <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_alert_path(alert), :class => 'btn btn-success' %>
-            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+            <%= link_to t('Delete from records', :default => t("helpers.links.destroy")),
                         alert_path(alert),
                         :method => :delete,
                         :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
@@ -80,9 +78,7 @@
           <td><%= alert.time_alert %> <br><strong>Contents</strong><br><%= alert.contents %> </td>
           <td><%= alert.to_sms%></td>
           <td>
-            <%= link_to t('.edit', :default => t("helpers.links.edit")),
-                        edit_txtalert_path(alert), :class => 'btn btn-success' %>
-            <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
+            <%= link_to t('Delete from records', :default => t("helpers.links.destroy")),
                         txtalert_path(alert),
                         :method => :delete,
                         :data => { :confirm => t('.confirm', :default => t("helpers.links.confirm", :default => 'Are you sure?')) },
