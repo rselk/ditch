@@ -21,6 +21,7 @@ scheduler.every '10' do
   end
 end
 
+=begin 
 
 txtscheduler.every '20' do
   @txtalerts = Txtalert.where("unixtime < ? AND msg_sent = ?", Time.now.to_i, 'f')
@@ -34,5 +35,8 @@ txtscheduler.every '20' do
     p.update_attributes(msg_sent: 't')
     scheduler.join
   end
+  ==end
+
+=end
 
 end
