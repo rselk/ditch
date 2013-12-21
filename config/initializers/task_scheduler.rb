@@ -15,7 +15,15 @@ scheduler.every '10' do
   @emailalerts = Alert.where("unixtime < ? AND msg_sent = ?", Time.now.to_i, 'f')
 
   @emailalerts.each do |p|
-    AlertMail.send_email_alert(p.to_email, p.contents).deliver
+    #get email address from email (so we can allow multiple addresses)
+    @emails = Email.where(:alerts_id => p.id)
+
+    puts "!!!!!!! MY EMAILS: #{@emails}"
+
+    @emails.each do |t|
+      AlertMail.send_email_alert(t.address, p.contents).deliver 
+      puts "SENT EMAIL TO #{t.address}"
+    end
     p.update_attributes(msg_sent: 't')
     scheduler.join
   end
