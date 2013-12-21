@@ -32,7 +32,7 @@ scheduler.every '10' do
     end 
     
     p.update_attributes(msg_sent: 't')
-    scheduler.join
+    #scheduler.join
   end
 end
 
