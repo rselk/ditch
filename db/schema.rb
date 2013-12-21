@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20131220221642) do
+ActiveRecord::Schema.define(version: 20131221002627) do
 
 # Could not dump table "alerts" because of following NoMethodError
 #   undefined method `[]' for nil:NilClass
@@ -19,6 +19,13 @@ ActiveRecord::Schema.define(version: 20131220221642) do
   create_table "emails", force: true do |t|
     t.integer  "alerts_id"
     t.string   "address"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "sms", force: true do |t|
+    t.integer  "alerts_id"
+    t.string   "smsnumber"
     t.datetime "created_at"
     t.datetime "updated_at"
   end

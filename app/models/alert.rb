@@ -1,7 +1,7 @@
 class Alert < ActiveRecord::Base
   belongs_to :user
   before_save :addtimezone
-  after_save :addemails
+  after_save :addevents
 
   has_many :emails
   accepts_nested_attributes_for :emails
@@ -9,13 +9,21 @@ class Alert < ActiveRecord::Base
 
   private
 
-  def addemails
+  def addevents
     #parse the email attribute and add each address to the email model
     emails = self.to_email.split(",").map(&:strip)
 
+
     emails.each { |x| 
-      @addemail = Email.new(:alerts_id => self.id, :address => x)
-      @addemail.save }
+      if x.include? "@"
+        @addemail = Email.new(:alerts_id => self.id, :address => x)
+        @addemail.save 
+      else
+        @addsms = Sms.new(:alerts_id => self.id, :smsnumber => x)
+        @addsms.save
+      end
+    }
+        
 
   end
   def addtimezone 

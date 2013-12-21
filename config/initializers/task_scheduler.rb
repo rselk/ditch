@@ -11,19 +11,26 @@ scheduler.every '10' do
   # if so, send email + mark record as sent (DO NOT DELETE AS NEED TO ALERT USER)
   # if not, do nothing
   
-  puts "DateTime.current = #{DateTime.current}"
   @emailalerts = Alert.where("unixtime < ? AND msg_sent = ?", Time.now.to_i, 'f')
 
   @emailalerts.each do |p|
     #get email address from email (so we can allow multiple addresses)
     @emails = Email.where(:alerts_id => p.id)
-
-    puts "!!!!!!! MY EMAILS: #{@emails}"
+    @sms = Sms.where(:alerts_id => p.id)
 
     @emails.each do |t|
       AlertMail.send_email_alert(t.address, p.contents).deliver 
       puts "SENT EMAIL TO #{t.address}"
     end
+
+    @sms.each do |t|
+      @client.account.messages.create(
+      :from => '+15873162981', #this is the default number for now
+      :to => "+ #{t.smsnumber}",
+      :body => "#{p.contents}"
+      )
+    end 
+    
     p.update_attributes(msg_sent: 't')
     scheduler.join
   end
