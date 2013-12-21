@@ -4,18 +4,24 @@
 </div>
 
 <dl class="dl-horizontal">
-  <dt><strong><%= model_class.human_attribute_name(:time_alert) %>:</strong></dt>
+  <dt><strong>Time of Alert:</strong></dt>
   <dd><%= @alert.time_alert %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:contents) %>:</strong></dt>
-  <dd><%= @alert.contents %></dd>
-  <dt><strong><%= model_class.human_attribute_name(:to_email) %>:</strong></dt>
-  <dd><%= @alert.to_email %></dd>
+  
+  <dt><strong>Recipients:</strong></dt>
 
+  <% @reciplist = @alert.to_email.split(",").map(&:strip) %>
+  <% @reciplist.each do |e| %>
+  <dd> <%= e %> </dd>
+  <% end %>
+  <br>
+  
+  <dt><strong><%= model_class.human_attribute_name(:contents) %>:</strong></dt>
+  <dd><%= @alert.contents %></dd> 
 </dl>
 
 <div class="form-actions">
   <%= link_to t('.edit', :default => t("helpers.links.edit")),
-              edit_alert_path(@alert), :class => 'btn' %>
+              edit_alert_path(@alert), :class => 'btn btn-warning' %>
   <%= link_to t('.destroy', :default => t("helpers.links.destroy")),
               alert_path(@alert),
               :method => 'delete',

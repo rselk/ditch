@@ -46,8 +46,14 @@ class AlertsController < ApplicationController
   # PATCH/PUT /alerts/1
   # PATCH/PUT /alerts/1.json
   def update
+    #this is ugly. delete the only emails/sms then they will be re-created.  
+    Email.where(:alerts_id => @alert.id).destroy_all
+    Sms.where(:alerts_id => @alert.id).destroy_all
+
     respond_to do |format|
       if @alert.update(alert_params)
+        
+
         format.html { redirect_to @alert, notice: 'Alert was successfully updated.' }
         format.json { head :no_content }
       else
@@ -60,9 +66,15 @@ class AlertsController < ApplicationController
   # DELETE /alerts/1
   # DELETE /alerts/1.json
   def destroy
+    #find the sms and emails which this alert is attached to.
+    #then destroy them
+    Email.where(:alerts_id => @alert.id).destroy_all
+    Sms.where(:alerts_id => @alert.id).destroy_all
+
+    #then destroy the alert itself
     @alert.destroy
     respond_to do |format|
-      format.html { redirect_to alerts_url }
+      format.html { redirect_to manage_path }
       format.json { head :no_content }
     end
   end
