@@ -36,22 +36,3 @@ scheduler.every '10' do
   end
 end
 
-=begin 
-
-txtscheduler.every '20' do
-  @txtalerts = Txtalert.where("unixtime < ? AND msg_sent = ?", Time.now.to_i, 'f')
-
-  @txtalerts.each do |p|
-    @client.account.messages.create(
-    :from => '+15873162981', #this is the default number for now
-    :to => "+ #{p.to_sms}",
-    :body => "#{p.contents}"
-    )
-    p.update_attributes(msg_sent: 't')
-    scheduler.join
-  end
-  ==end
-
-=end
-
-# end
