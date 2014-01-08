@@ -1,6 +1,5 @@
 <% if @alerts_false.size != 0 || @alerts_true.size != 0 || @txtalerts_true.size != 0 || @txtalerts_false.size != 0 %>
 
-
 <%- model_class = Manage-%>
 
 <% if @alerts_true.size != 0 || @txtalerts_true.size != 0 %>
@@ -86,6 +85,7 @@
 <% else %>
   <h1>You have no alerts</h1>
   <br>
- <%= link_to '<i class="icon-white icon-th-list"></i> Add Alert'.html_safe, "addalert", :class => "btn btn-success btn-large butmain" %>  
-
+  <div>
+ <%= link_to '<i class="icon-white icon-th-list"></i> Add Alert'.html_safe, "addalert", :class => "btn btn-inverse btn-large butmain" %>  
+</div>
 <% end %>

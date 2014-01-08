@@ -10,9 +10,9 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 
+//= requre jquery.min
+//= require Chart
 //= require jquery_ujs
 //= require jquery.ui.datepicker
 //= require jquery.ui.slider
 //= require jquery-ui-timepicker-addon
-//= require_self
-//= require_tree .

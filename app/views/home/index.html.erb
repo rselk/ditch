@@ -1,66 +1,73 @@
-<div class="container">
-  <div class="row">
-    <div class="span9">
+
      <% if user_signed_in? %>
       <br>
 
-      <%= link_to '<i class="icon-white icon-th-list"></i> Add Alert'.html_safe, "addalert", :class => "btn btn-success btn-large butmain" %> 
+      <%= link_to '<i class="icon-white icon-th-list"></i> Add Alert'.html_safe, "addalert", :class => "btn btn-inverse btn-large butmain" %> 
       <br><br>
-      <%= link_to '<i class="icon-white icon-th-list"></i> Manage Alerts'.html_safe, "manage", :class => "btn btn-success btn-large butmain" %>   
+      <%= link_to '<i class="icon-white icon-th-list"></i> Manage Alerts'.html_safe, "manage", :class => "btn btn-inverse btn-large butmain" %>   
       <br><br>
-      <%= link_to '<i class="icon-white icon-user"></i> Sign Out'.html_safe, destroy_user_session_path, :class => "btn btn-success btn-large butmain", :method => :delete %> 
+      <%= link_to '<i class="icon-white icon-user"></i> Sign Out'.html_safe, destroy_user_session_path, :class => "btn btn-inverse btn-large butmain", :method => :delete %> 
 
-      <br>
-      <br>
+     
 
       <% else %>
-      <h1> ditch </h1>
-      <h2> Delayed - Switch </h2>
-        <p>A take on an internet deadmans switch. Create messages with departure dates and if you do not remove them in time, our system will send them.</p> 
+          
+   <div class="span4 offset1">
+i<br><br>
+    <h2 class="fancy"> Write a Message </h2>
+<h2 class="fancy">Set Date and Time</h2>
+<h2 class="fancy">Pick recipients (Email/SMS)</h2>
 
-    </div>
-    <div class="span3 withLineHeight sidebarlink">
-     <h2>Sign In</h2>
+<br>
+<br>
+<h3>If you don't ditch the message in time. It will send!</h3>
+
+
+          
+   </div>
+ <div class="span5 offset1">
+
+   <h2 class="fancynb">Sign In</h2>
         <%= form_for("user", :url => user_session_path) do |f| %>
 
         <div>
-        <%= f.email_field :email, :placeholder => "Email" %></div>
+        <%= f.email_field :email, :class => "register-size", :placeholder => "Email" %></div>
         <div>
-         
-        <%= f.password_field :password , :placeholder => "Password"%></div>
+        <div class="signuppw" >
+        <%= f.password_field :password , :class => "pw-size", :placeholder => "Password"%>
         
-        <%= f.label :remember_me do %>
-          <%= f.check_box :remember_me %>
-          Remember &nbsp;&nbsp;
-          <%= link_to "   Forgot Password?", new_password_path('user') %>
-        <% end %>
+        
 
-      <%= f.submit 'Sign in', :class => "btn btn-success btn-large butmain" %>
+      <%= f.submit 'Sign in', :class => "btn btn-inverse smbutmain " %>
+      </div>
       
   <% end %>
 
 
-        <h2>Register Now!</h2>
 
+
+  <h2 class="fancynb">Register Now!</h2>
   <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
     <%= devise_error_messages! %>
 
     <div>
-    <%= f.email_field :email, :placeholder => "Email"  %></div>
+    <%= f.email_field :email, :class => "register-size", :placeholder => "Email"  %></div>
     <div>
-    <%= f.select :timezone, ActiveSupport::TimeZone.all { |z| [z.name, z.utc_offset / 1.hour] }%>
+    <%= f.select :timezone, ActiveSupport::TimeZone.all { |z| [z.name, z.utc_offset / 1.hour] }, {},
+    :class => "register-size" %>
+    </div>
     <div>
-    <%= f.password_field :password, :placeholder => "Password"  %></div>
+    <%= f.password_field :password, :class => "register-size", :placeholder => "Password"  %></div>
 
     <div>
-    <%= f.password_field :password_confirmation, :placeholder => "Confirm Password"  %></div>
+    <%= f.password_field :password_confirmation, :class => "register-size", :placeholder => "Confirm Password"  %></div>
 
     
-    <div><%= f.submit 'Register!', :class => "btn btn-success btn-large butmain" %></div>
+    <div><%= f.submit 'Register!', :class => "btn btn-inverse btn-large butmain" %></div>
   <% end %>
 
   <% end %>        
-
+</div>
 
 
     </div>

@@ -1,5 +1,7 @@
+
+
 @import "twitter/bootstrap/bootstrap";
-body { padding-top: 60px; } 
+
 @import "twitter/bootstrap/responsive";
 
 // Set the correct sprite paths
@@ -30,57 +32,77 @@ body { padding-top: 60px; }
 // Example:
 // @linkColor: #ff0000;
 
+/*!
+ * Bootstrap v3.0.0
+ *
+ * Copyright 2013 Twitter, Inc
+ * Licensed under the Apache License v2.0
+ * http://www.apache.org/licenses/LICENSE-2.0
+ *
+ * Designed and built with all the love in the world by @mdo and @fat.
+ */
+
+/*! normalize.css v2.1.0 | MIT License | git.io/normalize */
+// Font Awesome
+@import "fontawesome/font-awesome";
+
+// Glyphicons
+//@import "twitter/bootstrap/sprites.less";
+
+// Your custom LESS stylesheets goes here
+//
+// Since bootstrap was imported above you have access to its mixins which
+// you may use and inherit here
+//
+// If you'd like to override bootstrap's own variables, you can do so here as well
+// See http://twitter.github.com/bootstrap/customize.html#variables for their names and documentation
+//
+// Example:
+// @linkColor: #ff0000;
+
 .butmain {
-    width: 220px !important;
+    width: 230px !important;
+}
+.smbutmain {
+    width: 80px !important;
+    vertical-align: 3px;
+
+
+}
+.register-size{
+    width: 230px;
+    height: 30px !important;
+}
+.pw-size{
+    width: 145px;
+    height: 30px !important;
 }
 
-
-p.ilink{color:rgb(0,0,255);}
-
-.withLineHeight {
-    line-height: 0px;
+.signuppw{
+    white-space: nowrap;
 }
 
-.sidebarlink {
-  a:link {color:#333;}      /* unvisited link */
-  a:visited {color:#333;}  /* visited link */
-  a:hover {color:#ffffff;}  /* mouse over link */
+li
+{
+padding-right: .6em;
+margin: .8em 0;
+color: white
+
 }
 
-.botlink {
-  a:link {color:#909090;}      /* unvisited link */
-  a:visited {color:#909090;}  /* visited link */
-  a:hover {color:#ffffff;}  /* mouse over link */
+ul.mainlist {
+  list-style-type:square;
+  vertical-align: 110px;
+  line-height: 40px;
+
 }
 
-/* footer */
-
-footer {
-  margin-top: 15px;
-  padding-top: 5px;
-  border-top: 1px solid #eaeaea;
-  color: #999;
+.fancy {
+  line-height: 1.1;
+  font-weight:bold;
+  color: white
 }
-
-footer a {
-  color: #555;
+.fancynb {
+  line-height: 1.1;
+  color: white
 }
-
-footer a:hover {
-  color: #222;
-}
-
-footer small {
-  float: left;
-}
-
-footer ul {
-  float: right;
-  list-style: none;
-}
-
-footer ul li {
-  float: left;
-  margin-left: 10px;
-}
-
