@@ -10,6 +10,7 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 
+//= require alerts.js
 //= requre jquery.min
 //= require Chart
 //= require jquery_ujs
