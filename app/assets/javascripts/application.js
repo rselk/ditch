@@ -10,10 +10,15 @@
 // Read Sprockets README (https://github.com/sstephenson/sprockets#sprockets-directives) for details
 // about supported directives.
 
-//= require alerts.js
-//= requre jquery.min
-//= require Chart
+
+
+//= require jquery
 //= require jquery_ujs
 //= require jquery.ui.datepicker
 //= require jquery.ui.slider
 //= require jquery-ui-timepicker-addon
+//= require jquery.timepicker
+//= require Chart
+//= require alerts.js
+//= require_tree .
+

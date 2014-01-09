@@ -1,30 +1,18 @@
 <% if user_signed_in? %>
-<body>
 
-<div class="container">
- 
-<!-------->
-<script type="text/javascript">
-    jQuery(document).ready(function ($) {
-        $('#tabs').tab();
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 
-        $('#time_alert').datetimepicker({
-  timeFormat: 'HH:mm z',
-  timezone: 'MT',
-  timezoneList: [ 
-      { value: 'ET', label: 'Eastern'}, 
-      { value: 'CT', label: 'Central' }, 
-      { value: 'MT', label: 'Mountain' }, 
-      { value: 'PT', label: 'Pacific' } 
-    ]
-});
-        });
-</script> 
+<%= javascript_include_tag "jquery-ui-timepicker-addon" %>
+<%= javascript_include_tag "jquery-ui-sliderAccess" %>
+
+
+
 
 <script type="text/javascript">
 $().ready(function() {
 
-$("#datepicker").datetimepicker({
+$("#datepicker2").datetimepicker({
     dateFormat: 'yy-mm-dd',
   onSelect: function(dateText, inst) { 
     $("#datepicker_value").val(dateText);
@@ -32,16 +20,6 @@ $("#datepicker").datetimepicker({
 });
 });
 
-$().ready(function() {
-
-$("#txtdatepicker").datetimepicker({
-      dateFormat: 'yy-mm-dd',
-  onSelect: function(dateText, inst) { 
-    $("#txtdatepicker_value").val(dateText);
-  }
-});
-
-});
 </script>
             <h1>Add an Alert</h1>
             <%= form_for @alert, :html => { :class => 'form-horizontal' } do |f| %>
@@ -49,7 +27,7 @@ $("#txtdatepicker").datetimepicker({
                 <div class="controls">
                   
                   <%= f.text_field :time_alert, :id => 'datepicker_value', :readonly => true %>
-                  <div id="datepicker"></div><br>
+                  <div id="datepicker2"></div><br>
                 </div>
               </div>
               <div class="control-group">
@@ -67,9 +45,9 @@ $("#txtdatepicker").datetimepicker({
                 <%= f.hidden_field :user_id, :value => current_user.id %>
                 <%= f.hidden_field :msg_sent, :value => 'f' %>
 
-  <div class="form-actions">
+
     <%= f.submit nil, :class => 'btn btn-success btn-large butmain' %>
-  </div>
+  
 <% end %>
       
 
