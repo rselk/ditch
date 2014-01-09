@@ -3,12 +3,8 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
 <script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
 
-<%= javascript_include_tag "selectize" %>
 <%= javascript_include_tag "jquery-ui-timepicker-addon" %>
-<%= javascript_include_tag "jquery-ui-sliderAccess" %>
-
-
-
+<%= javascript_include_tag "selectize" %>
 
 <script type="text/javascript">
 $().ready(function() {
@@ -22,27 +18,17 @@ $("#datepicker2").datetimepicker({
 });
 
 </script>
-  
-
-
-
-
-
             <h1>Add an Alert</h1>
             <br>
             <%= form_for @alert, :html => { :class => 'form-horizontal' } do |f| %>
               
            
               <div class="span5">  
-                  <h2> Contents </h2>
+                  <h2 class="fancynb"> Contents </h2>
                   <%= f.text_area :contents,  :rows => 6, :cols => 73, :class => 'input-block-level' %>
                   <br>
-
-
-
-           
-               
-                  <h2> Recipients </h2>
+                  <h2 class="fancynb"> Recipients </h2>
+                  <h4 class="fancynb"> ie: joesmith@gmail.com or 14032551234 </h4>
                   <%= f.text_field :to_email, :class => 'text_field', :id => "input-tags" %> <br>
          
 
@@ -51,9 +37,11 @@ $("#datepicker2").datetimepicker({
                 </div>
 
                 <div class="span4 offset1"> 
-                <h2> Date/Time </h2>
+                <h2 class="fancynb"> Date/Time </h2>
                   <div id="datepicker2"></div><br>
                   <%= f.text_field :time_alert, :id => 'datepicker_value', :readonly => true %>
+                  <br>
+                  <br>
                 </div> 
 
            <div class="span9 offset1 "> 
@@ -82,13 +70,4 @@ $("#datepicker2").datetimepicker({
         });
  </script>
 
- <script type="text/javascript">
-$().ready(function() {
 
-$("#datepicker2").datetimepicker({
-    dateFormat: 'yy-mm-dd',
-  onSelect: function(dateText, inst) { 
-    $("#datepicker_value").val(dateText);
-  }
-});
-});
