@@ -31,12 +31,14 @@
   <!-- Menu -->
   <nav class="menu" id="theMenu">
     <div class="menu-wrap">
-      <h1 class="logo"><a href="index.html#home">ditch.io</a></h1>
+      <h1 class="logo"><a href="http://ditch.io">ditch.io</a></h1>
       <i class="icon-remove menu-close"></i>
-      <a href="#home" class="smoothScroll">Home</a>
-      <a href="#about" class="smoothScroll">About</a>
-      <a href="#contact" class="smoothScroll">Contact</a>
-      <a href="#"><i class="icon-twitter"></i></a>
+      <%= link_to "Home", root_path %>
+      <%= link_to "About", about_path %>
+      <%= link_to "Contact", contact_path %>
+      <% if user_signed_in? %>
+        <%= link_to "Settings", edit_user_registration_path %>
+      <% end %>
      
     </div>
     

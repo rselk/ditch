@@ -1468,7 +1468,9 @@ th {
   border-bottom-width: 2px;
 }
 
-.table-striped > tbody > tr:nth-child(odd) > td,
+.table-striped > tbody > tr:nth-child(odd) > td {
+  background-color: #ffffff;
+  },
 .table-striped > tbody > tr:nth-child(odd) > th {
   background-color: #f9f9f9;
 }
