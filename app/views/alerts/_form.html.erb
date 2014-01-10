@@ -1,28 +1,62 @@
+<script type="text/javascript" src="http://code.jquery.com/jquery-1.10.2.min.js"></script>
+<script type="text/javascript" src="http://code.jquery.com/ui/1.10.3/jquery-ui.min.js"></script>
+
+<%= javascript_include_tag "jquery-ui-timepicker-addon" %>
+<%= javascript_include_tag "selectize" %>
+
+<script type="text/javascript">
+$().ready(function() {
+
+$("#datepicker2").datetimepicker({
+    dateFormat: 'yy-mm-dd',
+  onSelect: function(dateText, inst) { 
+    $("#datepicker_value").val(dateText);
+  }
+});
+});
+
+</script>
+
 <%= form_for @alert, :html => { :class => 'form-horizontal' } do |f| %>
-  <div class="control-group">
-    <%= f.label :time_alert, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :time_alert, :class => 'text_field' %>
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :contents, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_area :contents, :class => 'text_field' %>
+              
+           
+              <div class="span5">  
+                  <h2 class="fancynb"> Contents </h2>
+                  <%= f.text_area :contents,  :rows => 6, :cols => 73, :class => 'input-block-level' %>
+                  <br>
+                  <h2 class="fancynb"> Recipients </h2>
+                  <h4 class="fancynb"> ie: joesmith@gmail.com or 14032551234 </h4>
+                  <%= f.text_field :to_email, :class => 'text_field', :id => "input-tags" %> <br>
+         
 
-    </div>
-  </div>
-  <div class="control-group">
-    <%= f.label :to_email, :class => 'control-label' %>
-    <div class="controls">
-      <%= f.text_field :to_email, :class => 'text_field' %>
-    </div>
-  </div>
-  
+                <%= f.hidden_field :user_id, :value => current_user.id %>
+                <%= f.hidden_field :msg_sent, :value => 'f' %>
+                </div>
 
-  <div class="form-actions">
-    <%= f.submit "Update", :class => 'btn btn-success' %>
-    <%= link_to t('.cancel', :default => t("helpers.links.cancel")),
-                manage_path, :class => 'btn btn-danger' %>
-  </div>
+                <div class="span4 offset1"> 
+                <h2 class="fancynb"> Date/Time </h2>
+                  <div id="datepicker2"></div><br>
+                  <%= f.hidden_field :time_alert, :id => 'datepicker_value', :readonly => true %>
+                  <br>
+                  <br>
+                </div> 
+
+           <div class="span9 offset1 "> 
+    <%= f.submit nil, :class => 'btn btn-inverse btn-large butmain' %>
+    </div>
+   
 <% end %>
+
+<script type="text/javascript">
+        $('#input-tags').selectize({
+          plugins: ['remove_button'],
+            delimiter: ',',
+            persist: false,
+            create: function(input) {
+                return {
+                    value: input,
+                    text: input
+                }
+            }
+        });
+ </script>
