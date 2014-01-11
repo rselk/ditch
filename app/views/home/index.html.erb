@@ -62,8 +62,12 @@ i<br><br>
     <div>
     <%= f.password_field :password_confirmation, :class => "register-size", :placeholder => "Confirm Password"  %></div>
 
-    
     <div><%= f.submit 'Register!', :class => "btn btn-inverse btn-large butmain" %></div>
+    <small class="fancy"> *By Registering you agree to our <%= link_to 'TOS', 'tos' %> </small>
+    <br>
+    <br>
+    <br>
+    <br>
   <% end %>
 
   <% end %>        

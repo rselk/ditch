@@ -22,6 +22,7 @@ Introuble::Application.routes.draw do
   get 'about' => "about#index"
   get 'contact' => "contact#index"
   get 'developers' => "developers#index"
+  get 'tos' => "tos#index"
   # See how all your routes lay out with "rake routes".
 
   # You can have the root of your site routed with "root"

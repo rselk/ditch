@@ -1,10 +1,11 @@
 class AlertsController < ApplicationController
   before_action :set_alert, only: [:show, :edit, :update, :destroy]
+  before_filter :authenticate_user! 
 
   # GET /alerts
   # GET /alerts.json
   def index
-    
+
     if user_signed_in? 
       @alerts = Alert.where(user_id: current_user)
     else
